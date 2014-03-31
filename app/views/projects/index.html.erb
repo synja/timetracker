@@ -1,0 +1,25 @@
+<h1>Projects</h1>
+
+<p>Here are all of the projects:</p>
+
+<table>
+	<tbody>
+		<tr>
+			<th>Project</th>
+			<th>Company</th>
+		</tr>
+		<%= render partial: "project", collection: @projects %>
+	</tbody>
+</table>
+
+<% content_for :aside do %>
+	<%= render 'sidebar' %>
+<% end %>
+
+<!--
+<h4>Index of Projects</h4>
+
+< %  @projects.each do | p | %>
+<li>< % = link_to p.name, p %></li>
+< %  end %>
+-->
