@@ -1,31 +1,36 @@
-<%= form_for(@project) do |f| %>
-	<% if @project.errors.any? %>
-		<div id="errors">
-			<p>Please correct the following <%= pluralize(@project.errors.count, "error") %>:</p>
-			<ul>
-				<% @project.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-			</ul>
+<% if @work.errors.any? %>
+	<div id="errors">
+		<p>Please correct the following <%= pluralize(@work.errors.count, "error") %>:</p>
+		<ul>
+			<% @work.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<% doajax = false unless (defined? doajax) %>
+<%= form_for(@work, remote: doajax, :html => { :multipart => true }) do |f| %>
+	<div>
+		<%= f.label :project_id %>
+		<%= f.collection_select(:project_id, Project.all, :id, :name, prompt: true) %>
+	</div>
+	<div>
+		<%= f.label :datetimeperformed, 'Date/Time Performed' %>
+		<%=  f.datetime_select :datetimeperformed %>
+    <!-- <%= datetime_field("work", :datetimeperformed) %> -->
+	</div>
+	<div>
+		<%= f.label :hours %>
+		<%= f.select(:hours, [1,2,3,4,5,6,7,8], prompt: true) %>
+	</div>
+	<% if !doajax %>
+		<div>
+			<%= label_tag :doc, 'Notes (optional)' %>
+			<%= file_field_tag :doc %>
 		</div>
 	<% end %>
 	<div>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</div>
-	<div>
-		<%= f.label :slug %>
-		<%= f.text_field :slug %>
-	</div>
-	<div>
-		<%= f.label :default_rate %>
-		<%= f.text_field :default_rate %>
-	</div>
-	<div>
-		<%= f.label :company_id %>
-		<%= f.collection_select(:company_id, Company.all, :id, :name, prompt: true) %>
-	</div>
-	<div>
-		<%= f.submit @project.new_record? ? "Create Project" : "Update Project"  %>
+		<%= f.submit @work.new_record? ? "Create Work" : "Update Work"  %>
 	</div>
 <% end %>

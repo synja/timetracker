@@ -3,7 +3,7 @@ class Work < ActiveRecord::Base
 	belongs_to :user
 
 	validates :project, presence: true
-	validates :user, presence: true
+	# validates :user, presence: true
 	validates :datetimeperformed, presence: true
 	validate :date_is_in_past
 	validates :hours, numericality: { only_integer: true,

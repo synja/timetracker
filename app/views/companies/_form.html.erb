@@ -14,6 +14,15 @@
 		<%= f.label :name %>
 		<%= f.text_field :name %>
 	</div>
+  <div>
+		<%= f.label :location %>
+		<%= f.text_field :location %>
+  </div>
+  <div>  
+    <%= color_field("car", "color") %>
+    <%= date_field("user", "born_on") %>
+    <%= time_field("user", "born_on") %>
+  </div>    
 	<div>
 		<%= f.submit @company.new_record? ? "Create Company" : "Update Company"  %>
 	</div>

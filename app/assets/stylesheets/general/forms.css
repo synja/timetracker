@@ -12,7 +12,7 @@ form input {
 }
 
 div#errors {
-	color:#900;
+	color:#909;
 	font-weight:bold;
 }
 
@@ -21,7 +21,7 @@ form div.field_with_errors {
 }
 
 form div.field_with_errors label {
-	color:#900;
+	color:#909;
 	font-weight:bold;
 }
 

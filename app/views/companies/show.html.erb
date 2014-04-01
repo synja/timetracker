@@ -13,7 +13,7 @@
 		</tbody>
 	</table>
 <% else %>
-	<p>No projects</p>
+<p>No projects, <%= link_to "Add a Project",new_project_path %></p>
 <% end %>
 
 <% content_for :aside do %>
